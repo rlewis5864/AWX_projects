@@ -1,0 +1,7 @@
+{% for person in team %}
+    Hello {{ person }}!
+{% endfor %}
+
+This is a test file. Created by {{ user }}.
+Please feel free to ignore it!
+Have a nice day :)

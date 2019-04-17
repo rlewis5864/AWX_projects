@@ -1,0 +1,20 @@
+- hosts: 127.0.0.1
+  connection: local
+  become: true
+  vars:
+    doc_root: /var/www/html
+  tasks:
+    - name: Install Apache
+      yum:
+        name: httpd
+        state: latest
+    
+    - name: Create custom document root
+      file: path={{ doc_root }} state=directory owner=apache group=apache
+    
+    - name: Set up HTML file
+      copy: src=index.html dest={{ doc_root }}/index.html owner=apache group=apache mode=0644
+
+  handlers:
+    - name: restart apache
+      service: name=httpd state=restarted

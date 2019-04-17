@@ -1,0 +1,27 @@
+- hosts: webservers
+  vars: 
+    user: 'Rose'
+    team: ['Ben','Sam','James','Callum']
+  tasks:
+    - name: Update docker.sock file so sudo not needed
+      become: true
+      file: path=/var/run/docker.sock mode=0777
+      
+    - name: Copy file
+      tags:
+        - files
+      
+      template:
+        src: testfile.txt
+        dest: /tmp/testfile.txt
+        owner: ec2-user
+        group: ec2-user
+        mode: 0644
+    
+    - name: Remove copied file
+      tags: 
+        - tidy
+      file:
+        path: /tmp/testfile.txt
+        state: absent
+      
