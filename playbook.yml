@@ -1,4 +1,4 @@
-- hosts: webservers
+- hosts: all 
   vars: 
     user: 'Rose'
     team: ['Ben','Sam','James','Callum']
