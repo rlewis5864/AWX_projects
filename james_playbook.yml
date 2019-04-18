@@ -8,7 +8,7 @@
       docker_container:
         image: jenkins/jenkins
         name: jenkins
-        state: running
+        state: started
         exposed_ports:
           - 8080
           - 50000
