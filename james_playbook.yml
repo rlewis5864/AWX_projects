@@ -9,6 +9,6 @@
         image: jenkins/jenkins
         name: jenkins
         state: started
-        exposed_ports:
-          - 8080
-          - 50000
+        ports:
+          - "8080:8080"
+          - "50000:50000"
