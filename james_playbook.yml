@@ -1,0 +1,13 @@
+- hosts: all
+  vars: []
+  tasks:
+    - name: pull Jenkins docker image
+      docker_image:
+        name: jenkins/jenkins
+    - name: run Jenkins container
+      docker_container:
+        image: jenkins/jenkins
+        state: running
+        exposed_ports:
+          - 8080
+          - 50000
